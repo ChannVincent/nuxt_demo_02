@@ -5,7 +5,7 @@
       <h5 class="subtitle is-5">{{ subtitle }}</h5>
     </a>
     <div class="post-content">
-      {{ content }}, {{ moment(date).format('LLL') }}
+      {{ content }}, {{ formatDate() }}
     </div>
   </div>
 </template>
@@ -36,6 +36,11 @@ export default {
         required: false,
         default: new Date()
       }
+  },
+  methods: {
+    formatDate() {
+      return moment(this.date).format('LL')
+    }
   }
 }
 </script>
