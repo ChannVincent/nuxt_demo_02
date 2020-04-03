@@ -20,6 +20,7 @@
                     :title="post.title"
                     :subtitle="post.subtitle"
                     :content="post.content"
+                    :date="post.createdAt"
                     />
                   
                 </div>
