@@ -1,72 +1,81 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        nuxt-posts
-      </h1>
-      <h2 class="subtitle">
-        Nuxt project blog post
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div>
+    
+    <Navbar />
+    
+    <div class="blogs-page">
+        <div class="main-content">
+          <div class="container">
+            <div class="columns is-mobile">
+              <div class="column is-8 is-offset-2">
+                <div class="section">
+                  <div class="title">
+                    <h1>Newest Posts</h1>
+                    <hr>
+                  </div>
+                  
+                  <PostItem
+                    v-for="post in posts"
+                    :key="post.id"
+                    :title="post.title"
+                    :subtitle="post.subtitle"
+                    :content="post.content"
+                    />
+                  
+                </div>
+                <!-- end of post -->
+              </div>
+              <!-- end of side bar -->
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
+import Navbar from "@/components/Navbar"
+import PostItem from "@/components/PostItem"
 export default {
   components: {
-    Logo
+    Navbar,
+    PostItem
+  },
+  data() {
+    return {
+      title: 'Blog Post',
+      posts: [
+        {
+          id: "1",
+          title: "Title A",
+          subtitle: "Subititle A",
+          content: "Content A",
+          createdAt: new Date()
+        },
+        {
+          id: "2",
+          title: "Title B",
+          subtitle: "Subititle B",
+          content: "Content B",
+          createdAt: new Date()
+        }
+      ]
+    }
   }
 }
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.post-content {
+  font-style: italic;
 }
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.post {
+  margin-bottom: 20px;
+  padding: 5px;
+  border-bottom: 2px solid transparent;
 }
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+.post:hover {
+  border-bottom: 2px solid #e8e8e8;
 }
 </style>
