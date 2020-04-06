@@ -28,6 +28,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    {src: '~/plugins/filters.js'}
   ],
   /*
   ** Nuxt.js dev-modules
@@ -40,6 +41,8 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
     '@nuxtjs/bulma',
+    // Doc https://axios.nuxtjs.org/usage
+    '@nuxtjs/axios',
   ],
   /*
   ** Build configuration

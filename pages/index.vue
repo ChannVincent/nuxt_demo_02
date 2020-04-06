@@ -67,9 +67,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .post-content {
   font-style: italic;
+  font-size: 40px;
 }
 .post {
   margin-bottom: 20px;
