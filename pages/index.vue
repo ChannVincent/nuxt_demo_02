@@ -25,13 +25,18 @@
                     />
                   
                 </div>
-                <!-- end of post -->
               </div>
-              <!-- end of side bar -->
             </div>
           </div>
         </div>
       </div>
+      
+      <form>
+        <input type="text" v-model="form.title">
+        <input type="text" v-model="form.subtitle">
+      </form>
+      {{ isFormValid() }}
+      {{ isTitleValid }}
     </div>
   </div>
 </template>
@@ -46,12 +51,32 @@ export default {
   },
   data() {
     return {
-      title: 'Blog Post'
+      title: 'Blog Post',
+      form: {
+        title: "some title",
+        subtitle: "some subtitle"
+      }
     }
   },
   computed: {
     posts() {
       return this.$store.state.posts
+    },
+    isTitleValid() {
+      console.log('isTitleValid has been called')
+      if (this.form.title) {
+        return true
+      }
+      return false
+    }
+  },
+  methods: {
+    isFormValid() {
+      console.log('isFormValid has been called')
+      if (this.form.title) {
+        return true
+      }
+      return false
     }
   }
 }
