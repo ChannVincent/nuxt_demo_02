@@ -21,6 +21,7 @@
                     :subtitle="post.subtitle"
                     :content="post.content"
                     :date="post.createdAt"
+                    :isRead="post.isRead"
                     />
                   
                 </div>
@@ -52,14 +53,16 @@ export default {
           title: "Title A",
           subtitle: "Subititle A",
           content: "Content A",
-          createdAt: new Date()
+          createdAt: new Date(),
+          isRead: true
         },
         {
           id: "2",
           title: "Title B",
           subtitle: "Subititle B",
           content: "Content B",
-          createdAt: new Date()
+          createdAt: new Date(),
+          isRead: false
         }
       ]
     }
@@ -67,17 +70,3 @@ export default {
 }
 </script>
 
-<style scoped>
-.post-content {
-  font-style: italic;
-  font-size: 40px;
-}
-.post {
-  margin-bottom: 20px;
-  padding: 5px;
-  border-bottom: 2px solid transparent;
-}
-.post:hover {
-  border-bottom: 2px solid #e8e8e8;
-}
-</style>
