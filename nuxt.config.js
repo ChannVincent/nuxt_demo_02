@@ -41,8 +41,6 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
     '@nuxtjs/bulma',
-    // Doc https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
   ],
   /*
   ** Build configuration
