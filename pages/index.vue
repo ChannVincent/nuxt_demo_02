@@ -58,6 +58,12 @@ export default {
       }
     }
   },
+  mounted() {
+    const a = this.$store.dispatch('fetchPosts')
+        .then((posts) => {
+          console.log(posts)
+        })
+  },
   computed: {
     posts() {
       return this.$store.state.posts
