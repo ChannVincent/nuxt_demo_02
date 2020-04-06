@@ -7,7 +7,8 @@ export const state = () => {
         subtitle: "Subititle A",
         content: "Content A",
         createdAt: new Date(),
-        isRead: true
+        isRead: true,
+        author: "Vincent"
       },
       {
         id: "2",
@@ -15,7 +16,8 @@ export const state = () => {
         subtitle: "Subititle B",
         content: "Content B",
         createdAt: new Date(),
-        isRead: false
+        isRead: false,
+        author: "Vincent"
       }
     ]
   }

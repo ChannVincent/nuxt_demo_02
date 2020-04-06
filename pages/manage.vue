@@ -16,36 +16,15 @@
         </aside>
         <div class="column is-4 messages hero is-fullheight" id="message-feed">
           <div class="inbox-messages" id="inbox-messages">
-            <div class="card">
-              <div class="card-content">
-                <div class="msg-header">
-                  <span class="msg-from"><small>From Filip Jerga</small></span>
-                  <span class="msg-timestamp"></span>
-                  <span class="msg-attachment"><i class="fa fa-paperclip"></i></span>
-                </div>
-                <div class="msg-subject">
-                  <span class="msg-subject"><strong id="fake-subject-1">Some Title</strong></span>
-                </div>
-                <div class="msg-snippet">
-                  <p id="fake-snippet-1">Some Subtitle</p>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-content">
-                <div class="msg-header">
-                  <span class="msg-from"><small>From Filip Jerga </small></span>
-                  <span class="msg-timestamp"></span>
-                  <span class="msg-attachment"><i class="fa fa-paperclip"></i></span>
-                </div>
-                <div class="msg-subject">
-                  <span class="msg-subject"><strong id="fake-subject-1">Some Title 2</strong></span>
-                </div>
-                <div class="msg-snippet">
-                  <p id="fake-snippet-1">Some Subtitle 2</p>
-                </div>
-              </div>
-            </div>
+            
+            <Card
+              v-for='post in posts'
+              :key='post.id'
+              :title="post.title"
+              :subtitle="post.subtitle"
+              :author="post.author"
+            />
+            
           </div>
         </div>
         <div class="column is-6 message hero is-fullheight is-hidden" id="message-pane">
@@ -86,9 +65,15 @@
 
 <script>
 import Navbar from '@/components/Navbar'
+import Card from '@/components/Card'
 export default {
   components: {
-    Navbar
+    Navbar, Card
+  },
+  data() {
+    return {
+      posts: this.$store.state.posts
+    }
   }
 }
 </script>
@@ -96,12 +81,5 @@ export default {
 <style scoped>
   .manage-page {
     padding: 30px;
-  }
-  .card {
-    margin-bottom: 10px;
-  }
-  .card:hover {
-    cursor: pointer;
-    background-color: #eeeeee;
   }
 </style>
