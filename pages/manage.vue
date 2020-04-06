@@ -66,14 +66,15 @@
 <script>
 import Navbar from '@/components/Navbar'
 import Card from '@/components/Card'
+import { mapState } from 'vuex'
 export default {
   components: {
     Navbar, Card
   },
-  data() {
-    return {
-      posts: this.$store.state.posts
-    }
+  computed: {
+    ...mapState({
+      posts: (state) => state.posts
+    })
   }
 }
 </script>

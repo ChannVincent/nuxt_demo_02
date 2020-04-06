@@ -46,8 +46,12 @@ export default {
   },
   data() {
     return {
-      title: 'Blog Post',
-      posts: this.$store.state.posts
+      title: 'Blog Post'
+    }
+  },
+  computed: {
+    posts() {
+      return this.$store.state.posts
     }
   }
 }
