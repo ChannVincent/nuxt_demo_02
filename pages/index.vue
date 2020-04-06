@@ -59,14 +59,11 @@ export default {
     }
   },
   mounted() {
-    const a = this.$store.dispatch('fetchPosts')
-        .then((posts) => {
-          console.log(posts)
-        })
+    this.$store.dispatch('post/fetchPosts')
   },
   computed: {
     posts() {
-      return this.$store.state.posts
+      return this.$store.state.post.items
     },
     isTitleValid() {
       console.log('isTitleValid has been called')
