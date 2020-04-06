@@ -27,19 +27,12 @@
             Menu
             </a>
             <div class="navbar-dropdown">
-              <a class="navbar-item">
-              Dashboard
-              </a>
-              <a class="navbar-item">
-              Profile
-              </a>
-              <a class="navbar-item">
-              Settings
-              </a>
-              <hr class="navbar-divider">
-              <div class="navbar-item">
-                Logout
-              </div>
+              <nuxt-link to="/" class="navbar-item">
+              Home
+              </nuxt-link>
+              <nuxt-link to="/manage" class="navbar-item">
+              Manage
+              </nuxt-link>
             </div>
           </div>
         </div>
