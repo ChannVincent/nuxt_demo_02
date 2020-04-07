@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     createPost() {
-      console.log(this.form)
+      this.$store.dispatch('post/createPost', this.form)
     }
   }
 }
