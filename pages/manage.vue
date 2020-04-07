@@ -7,6 +7,12 @@
           <div>
             <div class="compose has-text-centered">
               <Modal>
+                <template #actionButton>
+                  <a class="button is-primary is-block is-bold">
+                    <!-- Open Modal Here -->
+                    <span class="compose">Open</span>
+                  </a>
+                </template>
                 <form class="post-form">
                   <div class="field">
                     <label class="label">Title</label>

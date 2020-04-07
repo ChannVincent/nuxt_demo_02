@@ -1,9 +1,13 @@
 <template>
   <div>
-    <a @click="isActive = true" class="button is-danger is-block is-bold">
-      <!-- Open Modal Here -->
-      <span class="compose">Create</span>
-    </a>
+    <div @click="isActive = true">
+      <slot name="actionButton">
+        <a class="button is-danger is-block is-bold">
+          <!-- Open Modal Here -->
+          <span class="compose">Create</span>
+        </a>
+      </slot>
+    </div>
     <!-- Toggle Class Here -->
     <div :class="{'is-active': isActive}" class="modal">
       <div class="modal-background"></div>
