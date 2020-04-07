@@ -1,5 +1,5 @@
 <template>
-  <Modal>
+  <Modal @modalSubmitted="createPost">
     <template #actionButton>
       <a class="button is-primary is-block is-bold">
         <!-- Open Modal Here -->
@@ -11,6 +11,7 @@
         <label class="label">Title</label>
         <div class="control">
           <input 
+            v-model="form.title"
             class="input" 
             type="text" 
             placeholder="Awesome Title">
@@ -21,6 +22,7 @@
         <label class="label">Subtitle</label>
         <div class="control">
           <input 
+            v-model="form.subtitle"
             class="input" 
             type="email" 
             placeholder="Awesome subtitle">
@@ -30,6 +32,7 @@
         <label class="label">Content</label>
         <div class="control">
           <textarea 
+            v-model="form.content"
             class="textarea" 
             placeholder="Awesome Content">
           </textarea>
@@ -52,6 +55,11 @@ export default {
         subtitle: "",
         content: ""
       }
+    }
+  },
+  methods: {
+    createPost() {
+      console.log(this.form)
     }
   }
 }
