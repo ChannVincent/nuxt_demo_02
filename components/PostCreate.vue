@@ -58,8 +58,17 @@ export default {
     }
   },
   methods: {
-    createPost() {
-      this.$store.dispatch('post/createPost', this.form)
+    createPost(closeModal) {
+      // {...this.form} is a copy of this.form
+      // cannot mutate data sent in VueX workflow
+      this.$store.dispatch('post/createPost', {...this.form})
+      closeModal()
+      this.resetForm()
+    },
+    resetForm() {
+      this.form.title = ""
+      this.form.subtitle = ""
+      this.form.content = ""
     }
   }
 }
