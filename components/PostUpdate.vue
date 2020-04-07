@@ -40,6 +40,12 @@ export default {
       post: {...this.postData}
     }
   },
+  // watcher : watching for changes and update template
+  watch: {
+    postData(data, oldValue) {
+      this.post = {...data}
+    }
+  },
   methods: {
     updatePost() {
       console.log("update post")
