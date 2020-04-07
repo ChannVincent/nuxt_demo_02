@@ -34,6 +34,7 @@
 </template>
 <script>
 export default {
+  // props : cannot update template when data change > must use watchers
   props: ['postData'],
   data() {
     return {
