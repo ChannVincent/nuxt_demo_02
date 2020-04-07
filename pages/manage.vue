@@ -19,6 +19,7 @@
               v-for='post in posts'
               :key='post.id'
               @click="activatePost(post)"
+              :isActive="isPostActive(post)"
               :title="post.title"
               :subtitle="post.subtitle"
               :author="post.author"
@@ -88,6 +89,9 @@ export default {
     activatePost(post) {
       this.activePost = post
       console.log(this.activePost)
+    },
+    isPostActive(post) {
+      return this.activePost && post.id === this.activePost.id
     }
   }
 }

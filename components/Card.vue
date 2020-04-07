@@ -1,5 +1,8 @@
 <template>
-  <div class="card" @click="emitCardClicked">
+  <div 
+    class="card"
+    :class="{'is-active': isActive}" 
+    @click="emitCardClicked">
     <div class="card-content">
       <div class="msg-header">
         <span class="msg-from"><small>{{ author }}</small></span>
@@ -33,6 +36,11 @@ export default {
       type: String,
       required: false,
       default: 'unknown subtitle'
+    },
+    isActive: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   methods: {
@@ -50,5 +58,8 @@ export default {
 .card:hover {
   cursor: pointer;
   background-color: #eeeeee;
+}
+.card.is-active {
+  background-color:  #eeeeee;
 }
 </style>
