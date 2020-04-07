@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" @click="emitCardClicked">
     <div class="card-content">
       <div class="msg-header">
         <span class="msg-from"><small>{{ author }}</small></span>
@@ -33,6 +33,11 @@ export default {
       type: String,
       required: false,
       default: 'unknown subtitle'
+    }
+  },
+  methods: {
+    emitCardClicked() {
+      this.$emit("click")
     }
   }
 }

@@ -18,6 +18,7 @@
             <Card
               v-for='post in posts'
               :key='post.id'
+              @click="activatePost(post)"
               :title="post.title"
               :subtitle="post.subtitle"
               :author="post.author"
@@ -25,20 +26,13 @@
             
           </div>
         </div>
-        <div class="column is-6 message hero is-fullheight is-hidden" id="message-pane">
+        <div class="column is-6 message hero is-fullheight" id="message-pane">
           <div class="box message-preview">
-            <div class="top">
-              <div class="avatar">
-                <img src="https://placehold.it/128x128">
-              </div>
-              <div class="address">
-                <div class="name">John Smith</div>
-                <div class="email">someone@gmail.com</div>
-              </div>
-              <hr>
-              <div class="content">
-              </div>
-            </div>
+            
+            <PostUpdate 
+              :postData="activePost"
+            />
+            
           </div>
         </div>
       </div>
@@ -65,10 +59,16 @@
 import Navbar from '@/components/Navbar'
 import Card from '@/components/Card'
 import PostCreate from '@/components/PostCreate'
+import PostUpdate from '@/components/PostUpdate'
 import { mapState } from 'vuex'
 export default {
   components: {
-    Navbar, Card, PostCreate
+    Navbar, Card, PostCreate, PostUpdate
+  },
+  data() {
+    return {
+      activePost: {}
+    }
   },
   fetch({store}) {
     if (store.getters['post/hasEmptyItems']) {
@@ -79,6 +79,12 @@ export default {
     ...mapState({
       posts: (state) => state.post.items
     })
+  },
+  methods: {
+    activatePost(post) {
+      this.activePost = post
+      console.log(this.activePost)
+    }
   }
 }
 </script>
