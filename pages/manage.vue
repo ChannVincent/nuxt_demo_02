@@ -71,6 +71,11 @@ export default {
   components: {
     Navbar, Card
   },
+  fetch({store}) {
+    if (store.getters['post/hasEmptyItems']) {
+      return store.dispatch('post/fetchPosts')
+    }
+  },
   computed: {
     ...mapState({
       posts: (state) => state.post.items

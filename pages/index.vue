@@ -35,8 +35,6 @@
         <input type="text" v-model="form.title">
         <input type="text" v-model="form.subtitle">
       </form>
-      {{ isFormValid() }}
-      {{ isTitleValid }}
     </div>
   </div>
 </template>
@@ -44,6 +42,7 @@
 <script>
 import Navbar from "@/components/Navbar"
 import PostItem from "@/components/PostItem"
+import { fetchPostsAPI} from "@/store/post"
 export default {
   components: {
     Navbar,
@@ -58,28 +57,21 @@ export default {
       }
     }
   },
-  mounted() {
-    this.$store.dispatch('post/fetchPosts')
+  fetch({store}) {
+    if (store.getters['post/hasEmptyItems']) {
+      return store.dispatch('post/fetchPosts')
+    }
   },
+  // async asyncData() {
+  //   const posts = await fetchPostsAPI()
+  //   return { posts }
+  // },
+  // mounted() {
+  //   this.$store.dispatch('post/fetchPosts')
+  // },
   computed: {
     posts() {
       return this.$store.state.post.items
-    },
-    isTitleValid() {
-      console.log('isTitleValid has been called')
-      if (this.form.title) {
-        return true
-      }
-      return false
-    }
-  },
-  methods: {
-    isFormValid() {
-      console.log('isFormValid has been called')
-      if (this.form.title) {
-        return true
-      }
-      return false
     }
   }
 }

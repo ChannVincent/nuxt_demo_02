@@ -1,7 +1,7 @@
 import { INITIAL_DATA } from './index'
 
 // simulate api call
-function fetchPostsAPI() {
+export function fetchPostsAPI() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(INITIAL_DATA.posts)
@@ -15,6 +15,13 @@ export const state = () => {
     items: [
       // empty
     ]
+  }
+}
+
+// Getters are like computed properties but for VueX
+export const getters = {
+  hasEmptyItems(state) {
+    return state.items.length === 0
   }
 }
 
