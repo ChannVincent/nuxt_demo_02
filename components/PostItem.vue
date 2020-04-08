@@ -40,7 +40,7 @@ export default {
         required: false
       },
       date: {
-        type: Date,
+        type: Number,
         required: false,
         default: new Date()
       },
@@ -51,7 +51,7 @@ export default {
       }
   },
   methods: {
-    
+
   }
 }
 </script>
@@ -63,20 +63,20 @@ export default {
   border-bottom: 2px solid transparent;
   display: flex;
   flex-direction: row;
-  
+
   &-footer {
     font-style: italic;
   }
   &-content {
     flex: 1;
   }
-  
+
   &-right {
     float: right;
     justify-content: flex-end;
     align-self: center;
   }
-  
+
   &:hover {
     border-bottom: 2px solid #e8e8e8;
   }

@@ -1,5 +1,6 @@
 const express = require('express')
 const consola = require('consola')
+const bodyParser = require('body-parser')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
 
@@ -19,6 +20,38 @@ async function start () {
     const builder = new Builder(nuxt)
     await builder.build()
   }
+
+  // calling middleware providing functionnality
+  // before handling request
+  app.use(bodyParser.json())
+
+  app.get('/api/posts', function (request, response) {
+    return response.json({
+      posts: 'Just some testing data'
+    })
+  })
+
+  app.post('/api/posts', function (request, response) {
+    const data = request.body
+    console.log(data)
+    return response.json({
+      data
+    })
+  })
+
+  app.patch('/api/posts/:id', function (request, response) {
+    const id = request.params.id
+    return response.json({
+      posts: 'Data updated ' + id
+    })
+  })
+
+  app.delete('/api/posts/:id', function (request, response) {
+    const id = request.params.id
+    return response.json({
+      posts: 'Data deleted ' + id
+    })
+  })
 
   // Give nuxt middleware to express
   app.use(nuxt.render)

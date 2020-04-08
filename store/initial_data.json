@@ -1,0 +1,22 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "Title A",
+      "subtitle": "Subititle A",
+      "content": "Content A",
+      "createdAt": 1586348824471,
+      "isRead": true,
+      "author": "Vincent"
+    },
+    {
+      "id": "2",
+      "title": "Title B",
+      "subtitle": "Subititle B",
+      "content": "Content B",
+      "createdAt": 1586348824471,
+      "isRead": false,
+      "author": "Vincent"
+    }
+  ]
+}

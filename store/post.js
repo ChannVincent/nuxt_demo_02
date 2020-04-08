@@ -1,4 +1,4 @@
-import { INITIAL_DATA } from './index'
+import INITIAL_DATA from './initial_data.json'
 import Vue from 'vue'
 
 // simulate api call
@@ -6,7 +6,7 @@ export function fetchPostsAPI() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(INITIAL_DATA.posts)
-    }, 1000)
+    }, 0)
   })
 }
 
