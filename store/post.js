@@ -1,4 +1,5 @@
 import { INITIAL_DATA } from './index'
+import Vue from 'vue'
 
 // simulate api call
 export function fetchPostsAPI() {
@@ -58,6 +59,6 @@ export const mutations = {
     state.items.push(post)
   },
   replacePost(state, {post, index}) {
-    state.items[index] = post
+    Vue.set(state.items, index, post)
   }
 }
