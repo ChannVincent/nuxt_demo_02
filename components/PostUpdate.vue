@@ -16,7 +16,7 @@
         <input
           v-model="post.subtitle"
           class="input"
-          type="email"
+          type="text"
           placeholder="Awesome subtitle">
       </div>
     </div>
@@ -29,7 +29,7 @@
            placeholder="Awesome Content"></textarea>
       </div>
     </div>
-    <button @click="updatePost" class="button is-primary">Update</button>
+    <button @click.prevent="updatePost" class="button is-primary">Update</button>
   </form>
 </template>
 <script>
@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     updatePost() {
-      console.log("update post")
+      this.$store.dispatch('post/updatePost', {...this.post})
     }
   }
 }

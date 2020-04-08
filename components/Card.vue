@@ -1,19 +1,19 @@
 <template>
-  <div 
+  <div
     class="card"
-    :class="{'is-active': isActive}" 
+    :class="{'is-active': isActive}"
     @click="emitCardClicked">
     <div class="card-content">
       <div class="msg-header">
-        <span class="msg-from"><small>{{ author }}</small></span>
+        <span class="msg-from"><small>{{ post.author }}</small></span>
         <span class="msg-timestamp"></span>
         <span class="msg-attachment"><i class="fa fa-paperclip"></i></span>
       </div>
       <div class="msg-subject">
-        <span class="msg-subject"><strong id="fake-subject-1">{{ title }}</strong></span>
+        <span class="msg-subject"><strong id="fake-subject-1">{{ post.title }}</strong></span>
       </div>
       <div class="msg-snippet">
-        <p id="fake-snippet-1">{{ subtitle }}</p>
+        <p id="fake-snippet-1">{{ post.subtitle }}</p>
       </div>
     </div>
   </div>
@@ -21,26 +21,15 @@
 
 <script>
 export default {
-  props: {
-    author: {
-      type: String,
-      required: false,
-      default: 'unknown'
-    },
-    title: {
-      type: String,
-      required: false,
-      default: 'unknown title'
-    },
-    subtitle: {
-      type: String,
-      required: false,
-      default: 'unknown subtitle'
-    },
-    isActive: {
-      type: Boolean,
-      required: false,
-      default: false
+  props: ['isActive', 'postData'],
+  data() {
+    return {
+      post: {...this.postData}
+    }
+  },
+  watch: {
+    postData(data, oldValue) {
+      this.post = {...data}
     }
   },
   methods: {

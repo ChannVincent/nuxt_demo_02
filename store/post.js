@@ -39,6 +39,12 @@ export const actions = {
     postData.id = Math.random().toString(36).substr(2, 7)
     postData.createdAt = new Date()
     commit('addPost', postData)
+  },
+  updatePost({commit, state}, postData) {
+    const index = state.items.findIndex((post) => {
+      return post.id === postData.id
+    })
+    commit('replacePost', {post: postData, index})
   }
 }
 
@@ -50,5 +56,8 @@ export const mutations = {
   },
   addPost(state, post) {
     state.items.push(post)
+  },
+  replacePost(state, {post, index}) {
+    state.items[index] = post
   }
 }

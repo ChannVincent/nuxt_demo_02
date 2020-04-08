@@ -14,26 +14,24 @@
         </aside>
         <div class="column is-4 messages hero is-fullheight" id="message-feed">
           <div class="inbox-messages" id="inbox-messages">
-            
+
             <Card
               v-for='post in posts'
               :key='post.id'
               @click="activatePost(post)"
               :isActive="isPostActive(post)"
-              :title="post.title"
-              :subtitle="post.subtitle"
-              :author="post.author"
+              :postData="post"
             />
-            
+
           </div>
         </div>
         <div class="column is-6 message hero is-fullheight" id="message-pane">
           <div class="box message-preview">
-            
-            <PostUpdate 
+
+            <PostUpdate
               :postData="activePost"
             />
-            
+
           </div>
         </div>
       </div>
