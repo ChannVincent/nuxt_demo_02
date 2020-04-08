@@ -4,6 +4,11 @@ const bodyParser = require('body-parser')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
 
+const fileSystem = require('fs')
+const path = require('path')
+const filePath = '../store/initial_data.json'
+const initialData = require(filePath)
+
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
 config.dev = process.env.NODE_ENV !== 'production'
@@ -33,7 +38,19 @@ async function start () {
 
   app.post('/api/posts', function (request, response) {
     const data = request.body
-    console.log(data)
+    initialData.push(post)
+
+    fs.writeFile(
+      path.join(__dirname, filePath),
+      JSON.stringify(initialData, nul, 2),
+      function(error) {
+        if (error) {
+          return response.status(422).send(error)
+        }
+        return response.json('File successfully updated')
+      })
+
+
     return response.json({
       data
     })
