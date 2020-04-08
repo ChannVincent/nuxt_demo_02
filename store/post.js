@@ -38,8 +38,13 @@ export const actions = {
   createPost({commit}, postData) {
     // create post on server or persist data
     postData.id = Math.random().toString(36).substr(2, 7)
-    postData.createdAt = new Date()
-    commit('addPost', postData)
+    postData.createdAt = new Date().getTime()
+
+    return this.$axios.$post('/api/posts', postData)
+      .then((response) => {
+        commit('addPost', postData)
+        console.log(response)
+      })
   },
   updatePost({commit, state}, postData) {
     const index = state.items.findIndex((post) => {

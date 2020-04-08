@@ -37,22 +37,24 @@ async function start () {
   })
 
   app.post('/api/posts', function (request, response) {
-    const data = request.body
-    initialData.push(post)
+    const post = request.body
+    initialData.posts.push(post)
 
-    fs.writeFile(
+    fileSystem.writeFile(
       path.join(__dirname, filePath),
-      JSON.stringify(initialData, nul, 2),
+      JSON.stringify(initialData, null, 2),
       function(error) {
         if (error) {
           return response.status(422).send(error)
         }
+
+        console.log('Sending data to client')
         return response.json('File successfully updated')
       })
 
 
     return response.json({
-      data
+      post
     })
   })
 
